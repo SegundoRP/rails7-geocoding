@@ -2,13 +2,14 @@
 
 <h1>Flats</h1>
 
-<div id="flats">
-  <% @flats.each do |flat| %>
-    <%= render flat %>
-    <p>
-      <%= link_to "Show this flat", flat %>
-    </p>
-  <% end %>
-</div>
-
 <%= link_to "New flat", new_flat_path %>
+
+<div id='map' style='width: 100%; height: 800px;'></div>
+
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1Ijoic2VndW5kb3JlYmF6YSIsImEiOiJja3k0c3JhejUwZG91MnVvM2tlODdrZm1hIn0.v52CmMDvgtRnUn9h2YShNQ';
+  const map = new mapboxgl.Map({
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/streets-v12', // style URL
+  });
+</script>
