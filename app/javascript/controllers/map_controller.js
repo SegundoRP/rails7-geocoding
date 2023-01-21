@@ -14,5 +14,13 @@ export default class extends Controller {
       container: this.element, // container ID (puede ser map ahhi tmb ya que es el id del container)
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
     });
+
+    this.#addMarkerstoMap();
+  }
+
+  #addMarkerstoMap() {
+    const marker = new mapboxgl.Marker()
+      .setLngLat([30.5, 50.5])
+      .addTo(this.map);
   }
 }
