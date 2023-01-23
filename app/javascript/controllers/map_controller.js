@@ -19,8 +19,10 @@ export default class extends Controller {
   }
 
   #addMarkerstoMap() {
-    const marker = new mapboxgl.Marker()
-      .setLngLat([160.5, 120.5])
-      .addTo(this.map);
-  }
+    this.markersValue.forEach((marker) => {
+      const marker = new mapboxgl.Marker()
+        .setLngLat([marker.lng, marker.lat])
+        .addTo(this.map);
+    });
+  };
 }
