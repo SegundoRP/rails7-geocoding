@@ -34,8 +34,8 @@ export default class extends Controller {
 
       new mapboxgl.Marker(customMarker)
         .setLngLat([marker.lng, marker.lat])
-        .setPopup(popup)
-        .addTo(this.map);
+        .setPopup(popup) // para el pop up quye aparece con la info de cada marker
+        .addTo(this.map); // lo agrega al map
     });
   };
 

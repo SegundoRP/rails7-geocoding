@@ -16,14 +16,21 @@ class FlatsController < ApplicationController
 
   # GET /flats/1 or /flats/1.json
   def show
-    @markers = @flat.geocode.map do |flat|
-      {
-        lat: @flat.latitude,
-        lng: @flat.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { flat: @flat }),
-        marker_html: render_to_string(partial: "marker")
-      }
-    end
+    # una forma de hacerlo pero no es la mejor
+    # @markers = @flat.geocode.map do |flat|
+    #   {
+    #     lat: @flat.latitude,
+    #     lng: @flat.longitude,
+    #     info_window: render_to_string(partial: "info_window", locals: { flat: @flat }),
+    #     marker_html: render_to_string(partial: "marker")
+    #   }
+    # end
+
+    @markers = [{ lat: @flat.geocode[0],
+                  lng: @flat.geocode[1],
+                  info_window: render_to_string(partial: "info_window", locals: { flat: @flat }),
+                  marker_html: render_to_string(partial: "marker") }]
+    # metodo geocode lo que hace es obtener en un array las coordenadas de un record, lat primero y lng despues
   end
 
   # GET /flats/new
