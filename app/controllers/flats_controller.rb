@@ -1,5 +1,5 @@
 class FlatsController < ApplicationController
-  before_action :set_flat, only: %i[ show edit update destroy ]
+  before_action :set_flat, only: %i[show edit update destroy]
 
   # GET /flats or /flats.json
   def index
@@ -16,6 +16,13 @@ class FlatsController < ApplicationController
 
   # GET /flats/1 or /flats/1.json
   def show
+    @markers = @flat.geocode.map do |flat|
+      {
+        lat: @flat.latitude,
+        lng: @flat.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { flat: @flat })
+      }
+    end
   end
 
   # GET /flats/new
