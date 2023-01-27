@@ -8,6 +8,9 @@ class FlatsController < ApplicationController
       {
         lat: flat.latitude,
         lng: flat.longitude,
+        # for manage secodn direction in geocoder
+        # end_lat: @flat.end_latitude,
+        # end_lng: @flat.end_logitude,
         info_window: render_to_string(partial: 'info_window', locals: { flat: flat }),
         marker_html: render_to_string(partial: "marker")
       }
