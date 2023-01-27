@@ -49,6 +49,11 @@ class FlatsController < ApplicationController
   def create
     @flat = Flat.new(flat_params)
 
+    # For manage second direction
+    # @destiny_coordenates = @flat.destiny_address(params[:flat][:end_address])
+    # @flat.end_latitude = @destiny_coordenates.first.coordinates.first
+    # @flat.end_logitude = @destiny_coordenates.first.coordinates.last
+
     respond_to do |format|
       if @flat.save
         format.html { redirect_to flat_url(@flat), notice: "Flat was successfully created." }

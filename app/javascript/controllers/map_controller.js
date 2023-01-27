@@ -42,7 +42,7 @@ export default class extends Controller {
   // te posiciona la vista en el mapa (mas cerca)
   #fitMarkersToMap() {
     const bounds = new mapboxgl.LngLatBounds()
-    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
+    this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ])) //  this.markersValue[0]['end_lng'],this.markersValue[0]['end_lat'] agregar las otras coord de segunda direecion
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   };
 }
